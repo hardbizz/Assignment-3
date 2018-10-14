@@ -13,15 +13,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Assignment #3
+        
         //countSymbols("Андрей")
         //checkIchIn("Яковлевич")
         //myNameSurname("LysenkoAndrey")
-        //        var a = "jdDdfJJKKDdddd"
-        //        let lowerCaseString = a.lowercased()
-        //        print (lowerCaseString)
         //  mirroredString("ой всё")
-        separatedNumbersByThousand(-1253456456456770)
+        //separatedNumbersByThousand(-1253456456456770)
+
         
+        checkPassStrong("qwertQ3$")
         
     }
 }
@@ -75,26 +75,62 @@ func mirroredString(_ str: String) -> String {
 
 func separatedNumbersByThousand(_ number: Int64) -> String {
     var str = String(abs(number)) /* убираем "-" если есть, в конце вернём.
-   Будем двигаться с конца строки к началу, справа неалево, вставляя запятые
-  в каждую четвертую позицию (то есть после третей), пока не пройдём
-  всю длину, отнимая по 3 от общей длины строки. Так как на конец не нужна запятая,
-    сразу отнимем 3 от общей длины */
+     Будем двигаться с конца строки к началу, справа неалево, вставляя запятые
+     в каждую четвертую позицию (то есть после третьей), пока не пройдём
+     всю длину, отнимая по 3 от общей длины строки. Так как на конец не нужна запятая,
+     сразу отнимем 3 от общей длины */
     
     var step = str.count - 3
-    var position = 3 // начинаем с третьей справа (она вообще -3)
+    var position = 3 // начинаем с третьей справа налево(она вообще -3)
     while step > 0 {
-     str.insert(",", at: str.index(str.endIndex, offsetBy: -position))
+        str.insert(",", at: str.index(str.endIndex, offsetBy: -position))
         position+=4
         step-=3
         
     }
-     // если число заходило отрицательное, добавляем "-" в начало
+    // если число заходило отрицательное, добавляем "-" в начало
     if number < 0 {
         str = "-" + str
     }
     print (str)
     
-return str
+    return str
+}
+
+func checkPassStrong(_ password: String) -> Int {
+    var points = 0
+    var str = password
+    let array = ["0123456789", "abcdefghijklmnopqrstuvxyz", "ABCDEFGHIJKLMNOPQRSTUVXYZ","!@#$%^&*)-+=]'/.,><;'"]
+    
+    // функция проверяет входит ли хоть один символ из строки пароля в строку с перечисленными символами
+    // если входит, она ещё меняет значение глобальной переменной points (+1)
+    
+    func checkEntry (_ pass: String,_ sequence: String) -> Int {
+        var check = 0
+        for char in pass {
+            if check == 0 {
+                if sequence.contains(char) {
+                    check+=1
+                    points+=1
+                    print(char)
+                    // continue
+                }
+            }}
+        
+        print(check)
+        return check
+    }
+    
+    for i in array {
+        checkEntry(str, i)
+    }
+    if points == 4 {
+        points+=1
+    }
+    
+    print("\(password) набирает очков по сложности - \(points)")
+    
+    return points
 }
 
 
