@@ -14,6 +14,16 @@
 		FAFFA1142170A5F70062F596 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFFA1122170A5F70062F596 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FAFFA13D217331F50062F596 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAFFA139217331F40062F596 /* Assignment#3_part2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FAFFA124217331F20062F596;
+			remoteInfo = "Assignment#3_part2";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		FAFFA1062170A5F60062F596 /* Assignment#3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assignment#3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFFA1092170A5F60062F596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +32,7 @@
 		FAFFA1102170A5F70062F596 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAFFA1132170A5F70062F596 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAFFA1152170A5F70062F596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAFFA139217331F40062F596 /* Assignment#3_part2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Assignment#3_part2.xcodeproj"; path = "Assignment#3_part2/Assignment#3_part2.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +65,7 @@
 		FAFFA1082170A5F60062F596 /* Assignment#3 */ = {
 			isa = PBXGroup;
 			children = (
+				FAFFA139217331F40062F596 /* Assignment#3_part2.xcodeproj */,
 				FAFFA1092170A5F60062F596 /* AppDelegate.swift */,
 				FAFFA10B2170A5F60062F596 /* ViewController.swift */,
 				FAFFA10D2170A5F60062F596 /* Main.storyboard */,
@@ -62,6 +74,14 @@
 				FAFFA1152170A5F70062F596 /* Info.plist */,
 			);
 			path = "Assignment#3";
+			sourceTree = "<group>";
+		};
+		FAFFA13A217331F40062F596 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAFFA13E217331F50062F596 /* Assignment#3_part2.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,12 +130,28 @@
 			mainGroup = FAFFA0FD2170A5F60062F596;
 			productRefGroup = FAFFA1072170A5F60062F596 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FAFFA13A217331F40062F596 /* Products */;
+					ProjectRef = FAFFA139217331F40062F596 /* Assignment#3_part2.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FAFFA1052170A5F60062F596 /* Assignment#3 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FAFFA13E217331F50062F596 /* Assignment#3_part2.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Assignment#3_part2.app";
+			remoteRef = FAFFA13D217331F50062F596 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FAFFA1042170A5F60062F596 /* Resources */ = {

@@ -17,11 +17,11 @@ class ViewController: UIViewController {
         //countSymbols("Андрей")
         //checkIchIn("Яковлевич")
         //myNameSurname("LysenkoAndrey")
-        //  mirroredString("ой всё")
+        //mirroredString("ой всё")
         //separatedNumbersByThousand(-1253456456456770)
-
-        
-        checkPassStrong("qwertQ3$")
+        //checkPassStrong("qwertQ3$")
+        //sortArrayAndRemoveDublicates([4,6,7,7,7,3,3,4,9,8,7,3,3,2,2])
+        convertStrToTranslite("ЯЗЗЬ ОГОго")
         
     }
 }
@@ -132,6 +132,56 @@ func checkPassStrong(_ password: String) -> Int {
     
     return points
 }
+
+//part 2
+func sortArrayAndRemoveDublicates (_ array: Array<Int>)-> Array<Int> {
+    // будем проходится дважды: сначала берем первый элемент и запускаем проверку на сравнение с соседним
+    // столько раз, сколько элементов минус 3 так как сравнивать последний уже не надо и индекс с 0
+    var arr = array
+    var temp = 0
+    for _ in arr {
+        for i in 0..<arr.count - 3 {
+            if arr[i] > arr[i+1] {
+                temp = arr[i+1]
+                arr[i+1] = arr[i]
+                arr[i] = temp
+            } else {
+                if arr[i] == arr[i+1] {
+                    arr.remove(at: i+1)
+                }
+            }
+        }
+    }
+    print ("На входе был такой массив чисел: \(array)")
+    print("После сортировки и удаления дублей имеем: \(arr)" )
+    
+    return arr
+}
+
+func convertStrToTranslite(_ word: String) -> String {
+    var converted = ""
+    let dict: [String: String] = ["а":"a", "б":"b", "в":"v", "г":"g", "д":"d","е":"e",
+                "ё": "yo", "ж": "zh", "з":"z", "и":"i", "й":"y", "к":"k",
+                "л":"l", "н":"n", "о":"o", "п":"p", "р":"r", "с":"s", "т":"t",
+                "у":"u", "ф":"f", "х":"h", "ц":"ts", "ч":"ch", "ш":"sh", "щ":"sch",
+                "ъ":"", "ь":"", "э":"e", "ю":"yu", "я":"ya", "м":"m", " ":" ", "ы":"y"]
+                
+    for char in word {
+        // делаем временную константу в тип String из Character
+        let tmp = String(char)
+        // проверяем если буква большая, то ищем в словаре по уменьшенному ключу соответствие
+        // и искомую строку "пополняем" большим значением
+        if tmp != tmp.lowercased() {
+            converted+=(dict[tmp.lowercased()]!).uppercased()
+        } else {
+        converted+=dict[tmp]!
+        }
+    }
+    print(converted)
+    return converted
+    }
+    
+
 
 
 
