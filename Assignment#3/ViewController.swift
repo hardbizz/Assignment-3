@@ -21,8 +21,9 @@ class ViewController: UIViewController {
         //separatedNumbersByThousand(-1253456456456770)
         //checkPassStrong("qwertQ3$")
         //sortArrayAndRemoveDublicates([4,6,7,7,7,3,3,4,9,8,7,3,3,2,2])
-        convertStrToTranslite("ЯЗЗЬ ОГОго")
-        
+        //convertStrToTranslite("ЯЗЗЬ ОГОго")
+    //searchStringInStringsArray(["lada", "sedan", "baklazhan", "bogdan"], "da")
+        antimat(["fuck", "fak"], "hello my fak in  fuck or this fak your fuck")
     }
 }
 
@@ -39,8 +40,8 @@ func checkIchIn(_ str:String) {
 
 func myNameSurname(_ str: String) -> String {
     let lowerCaseString = str.lowercased() // создаём доп строку из маленьких букв для поиска большой сравнением
-    var positionOfUpperWord = 0 //позиция искомой большой буквы в середине строки
-    var i = 1 // будем перебирать строку но не с первого символа
+    var positionOfUpperWord = 0 //позиция(индекс) искомой большой буквы в середине строки
+    var i = 1 // будем перебирать строку, но не с первого символа
     for _ in 0..<str.count-1 {
         if str[str.index(str.startIndex, offsetBy: i)] !=
             lowerCaseString[lowerCaseString.index(lowerCaseString.startIndex, offsetBy: i)]
@@ -75,7 +76,7 @@ func mirroredString(_ str: String) -> String {
 
 func separatedNumbersByThousand(_ number: Int64) -> String {
     var str = String(abs(number)) /* убираем "-" если есть, в конце вернём.
-     Будем двигаться с конца строки к началу, справа неалево, вставляя запятые
+     Будем двигаться с конца строки к началу, справа налево, вставляя запятые
      в каждую четвертую позицию (то есть после третьей), пока не пройдём
      всю длину, отнимая по 3 от общей длины строки. Так как на конец не нужна запятая,
      сразу отнимем 3 от общей длины */
@@ -135,7 +136,7 @@ func checkPassStrong(_ password: String) -> Int {
 
 //part 2
 func sortArrayAndRemoveDublicates (_ array: Array<Int>)-> Array<Int> {
-    // будем проходится дважды: сначала берем первый элемент и запускаем проверку на сравнение с соседним
+    // будем проходиться дважды: сначала берем первый элемент и запускаем проверку на сравнение с соседним
     // столько раз, сколько элементов минус 3 так как сравнивать последний уже не надо и индекс с 0
     var arr = array
     var temp = 0
@@ -180,6 +181,36 @@ func convertStrToTranslite(_ word: String) -> String {
     print(converted)
     return converted
     }
+
+func searchStringInStringsArray(_ array: Array<String>, _ string: String) -> Array<String> {
+    var newarr: Array <String> = []
+    for element in array {
+        if element.contains(string) {
+            newarr.append(element)
+        }
+    }
+    print(newarr.sorted())
+    return newarr
+    
+}
+
+func antimat(_ set: Set<String>, _ string: String) -> String {
+    var changer = ""
+    var str = string
+    //var s = str as NSString
+    
+    for element in set {             // проходим по нашему сету,
+        if str.contains(element) {   //  если строка содержит в себе строку из сета,
+            for _ in 0..<element.count {  // создаём строку из звездочек, длиной как слово
+                changer+="*"
+            }
+            str = str.replacingOccurrences(of: element, with: changer) //заменяем слово на звёздочки,изменяем строку
+            changer = ""             //очищаем переменную для следующих слов из сета
+        }
+    }
+    print(str)
+    return str
+}
     
 
 
